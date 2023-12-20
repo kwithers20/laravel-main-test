@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +20,28 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::redirect('/dashboard', '/sales');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::get('/sales', function () {
-    return view('coffee_sales');
-})->middleware(['auth'])->name('coffee.sales');
+    Route::controller(SaleController::class)->prefix('sales')->group(function () {
+        Route::get('/', 'index')->name('coffee.sales');
+    });
 
-Route::get('/shipping-partners', function () {
-    return view('shipping_partners');
-})->middleware(['auth'])->name('shipping.partners');
+    Route::controller(ProductController::class)->prefix('product')->group(function () {
+        Route::get('/', 'index')->name('coffee.products');
+        Route::post('/', 'store')->name('coffee.products.store');
+    });
+
+    Route::controller(CustomerController::class)->prefix('customers')->group(function () {
+        Route::get('/', 'index')->name('coffee.customers');
+        Route::post('/', 'store')->name('coffee.customers.store');
+    });
+
+    // Route::get('/shipping-partners', function () {
+    //     return view('shipping_partners');
+    // })->name('shipping.partners');
+});
 
 require __DIR__.'/auth.php';
