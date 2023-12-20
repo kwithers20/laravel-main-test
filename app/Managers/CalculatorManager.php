@@ -7,10 +7,10 @@ class CalculatorManager
     /**
      * Calculate the selling price.
      *
-     * @param int $quantity The quantity.
-     * @param float $unitCost The cost per unit.
-     * @param float $profitMargin The profit margin as a decimal.
-     * @param float $shippingCost The shipping cost.
+     * @param  int  $quantity The quantity.
+     * @param  float  $unitCost The cost per unit.
+     * @param  float  $profitMargin The profit margin as a decimal.
+     * @param  float  $shippingCost The shipping cost.
      * @return float The calculated selling price.
      */
     public function calculateSalePrices($quantity, $unitCost, $profitMargin, $shippingCost = 10.00)

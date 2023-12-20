@@ -20,14 +20,4 @@ class ProductFactory extends Factory
             'name' => $this->faker->name(),
         ];
     }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return static
-     */
-    public function unverified()
-    {
-        //
-    }
 }

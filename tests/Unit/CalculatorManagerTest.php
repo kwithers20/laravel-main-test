@@ -1,4 +1,5 @@
 <?php
+
 use App\Managers\CalculatorManager;
 use PHPUnit\Framework\TestCase;
 

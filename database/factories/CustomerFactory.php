@@ -23,14 +23,4 @@ class CustomerFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
         ];
     }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return static
-     */
-    public function unverified()
-    {
-        //
-    }
 }

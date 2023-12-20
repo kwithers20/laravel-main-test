@@ -2,21 +2,26 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use App\Models\Product;
-use App\Models\Customer;
-use App\Models\Sales;
 use App\Managers\CalculatorManager;
+use App\Models\Customer;
+use App\Models\Product;
+use App\Models\Sales;
+use Livewire\Component;
 
 class SaleCalculator extends Component
 {
     public $products;
+
     public $customers;
 
     public $product_id;
+
     public $customer_id;
+
     public $quantity;
+
     public $unit_cost;
+
     public $sellingPrice = 0.00;
 
     public function render()
