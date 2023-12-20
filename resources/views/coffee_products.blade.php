@@ -15,8 +15,14 @@
                             {{ __('Add new product') }}
                         </h2>
                         <div class="flex items-center justify-between mt-4">
-                            <div>
-                                <x-input id="name" class="block mt-1 border w-full text-sm p-2" type="text" name="name" placeholder="Product name" :value="old('name')" required />
+                            <div class="flex items-center">
+                                <div class="mr-2">
+                                    <x-input id="name" class="block mt-1 border w-full text-sm p-2" type="text" name="name" placeholder="Product name" :value="old('name')" required />
+                                </div>
+
+                                <div>
+                                    <x-input id="profit_margin" class="block mt-1 border w-full text-sm p-2" type="number" step="0.01" name="profit_margin" placeholder="Profit margin" :value="old('profit_margin')" required />
+                                </div>
                             </div>
                             
                             <x-button class="ml-3">
@@ -33,6 +39,9 @@
                         {{ __('Product Name') }}
                     </x-table-head-cell>
                     <x-table-head-cell>
+                        {{ __('Profit Margin') }}
+                    </x-table-head-cell>
+                    <x-table-head-cell>
                         {{ __('Created At') }}
                     </x-table-head-cell>
                 </x-slot>
@@ -43,11 +52,14 @@
                                 {{ $product->name }}
                             </x-table-body-cell>
                             <x-table-body-cell>
+                                {{ number_format($product->profit_margin / 100, 2, '.', ',') }}
+                            </x-table-body-cell>
+                            <x-table-body-cell>
                                 {{ $product->created_at->format('M d, Y') }}
                             </x-table-body-cell>
                         </tr>
                     @empty
-                        <x-table-body-cell colspan="4">
+                        <x-table-body-cell colspan="3">
                             {{ __('No products yet') }}
                         </x-table-body-cell>
                     @endforelse

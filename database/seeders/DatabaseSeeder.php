@@ -23,6 +23,12 @@ class DatabaseSeeder extends Seeder
 
         Product::factory()->create([
             'name' => 'Gold Coffee',
+            'profit_margin' => 25,
+        ]);
+
+        Product::factory()->create([
+            'name' => 'Arabic coffee',
+            'profit_margin' => 15,
         ]);
 
         Customer::factory()->create([

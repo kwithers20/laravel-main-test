@@ -24,10 +24,12 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'profit_margin' => 'required|numeric|min:0|max:100',
         ]);
 
         Product::create([
             'name' => $request->name,
+            'profit_margin' => $request->profit_margin * 100,
         ]);
 
         return redirect()->route('coffee.products')->with('success', 'Product added successfully.');

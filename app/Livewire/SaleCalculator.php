@@ -35,8 +35,10 @@ class SaleCalculator extends Component
             'unit_cost' => 'required|numeric|min:0.01',
         ]);
 
+        $product = Product::find($this->product_id);
+
         $calculator = new CalculatorManager();
-        $this->sellingPrice = $calculator->calculateSalePrices($this->quantity ?? 0, $this->unit_cost ?? 0, 0.25);
+        $this->sellingPrice = $calculator->calculateSalePrices($this->quantity ?? 0, $this->unit_cost ?? 0, $product->profit_margin / 100);
     }
 
     public function save()

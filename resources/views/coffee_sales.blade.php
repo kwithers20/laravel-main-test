@@ -27,7 +27,7 @@
                         {{ __('Selling price') }}
                     </x-table-head-cell>
                     <x-table-head-cell>
-                        {{ __('Sold ar') }}
+                        {{ __('Sold at') }}
                     </x-table-head-cell>
                 </x-slot>
                 <x-slot name="body">
@@ -53,7 +53,7 @@
                             </x-table-body-cell>
                         </tr>
                     @empty
-                        <x-table-body-cell colspan="4">
+                        <x-table-body-cell colspan="6">
                             {{ __('No sales yet') }}
                         </x-table-body-cell>
                     @endforelse

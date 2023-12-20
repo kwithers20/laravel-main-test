@@ -16,15 +16,9 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::redirect('/', '/login');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
     Route::controller(SaleController::class)->prefix('sales')->group(function () {
         Route::get('/', 'index')->name('coffee.sales');
     });

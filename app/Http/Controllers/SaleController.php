@@ -12,7 +12,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Sales::orderBy('created_at')->get();
+        $sales = Sales::orderBy('created_at', 'desc')->get();
 
         return view('coffee_sales', compact('sales'));
     }
